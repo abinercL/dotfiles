@@ -1,5 +1,5 @@
-rm -rf ~/.config/alacritty.yml
-ln -sf ~/.dotfiles/src/alacritty.yml ~/.config/alacritty.yml
+rm -rf ~/.config/alacritty.toml
+ln -sf ~/.dotfiles/src/alacritty.toml ~/.config/alacritty.toml
 
 rm -rf ~/.config/starship.toml
 ln -sf ~/.dotfiles/src/starship.toml ~/.config/starship.toml
