@@ -17,7 +17,7 @@ gsettings set com.zorin.desktop.auto-theme night-theme 'ZorinBlue-Dark'
 gsettings set org.gnome.shell.extensions.user-theme name 'ZorinBlue-Dark'
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
-gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:appmenu'
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:maximize,minimize,close'
 
 #config dos atalhos
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']" 
