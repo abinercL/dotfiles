@@ -1,38 +1,32 @@
-#configuração inicial de atualização de pacotes 
-sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
+# configure package manager pacman
+echo "[options]\nParallelDownloads =: 5\nIloveCandy" | sudo tee -a /etc/pacman.conf
+sudo pacman-mirrors --fasttrack
+sudo pacman -Syyu --noconfirm
 
-#instalando fonts and tema
-sudo wget https://github.com/githubnext/monaspace/releases/download/v1.000/monaspace-v1.000.zip -O ~/Downloads/monaspace.zip
-cd ~/Downloads && unzip monaspace.zip && mkdir ~/.local/share/fonts && mv ~/Downloads/monaspace-v1.000/fonts/{otf,variable}/* ~/.local/share/fonts && cd
+#install package to configs
+sudo pacman -S yay --noconfirm
 
-sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip -O ~/Downloads/firacode.zip
-cd ~/Downloads && unzip firacode.zip && mv ~/Downloads/FiraCode* ~/.local/share/fonts && cd
+yay -S ttf-cascadia-code montserrat-font otf-san-francisco noto-fonts-emoji gtk-engine-murrine catppuccin-gtk-theme-mocha --noconfirm
 
-fc-cache -fv
+# some useful configs
 
-#config de tema 
-gsettings set org.gnome.desktop.interface gtk-theme 'ZorinBlue-Dark'
-gsettings set com.zorin.desktop.auto-theme day-theme 'ZorinBlue-Dark'
-gsettings set com.zorin.desktop.auto-theme night-theme 'ZorinBlue-Dark'
-gsettings set org.gnome.shell.extensions.user-theme name 'ZorinBlue-Dark'
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+gsettings set org.gnome.shell.app-switcher current-workspace-only true
+gsettings set org.gnome.desktop.interface clock-show-weekday true
+gsettings set org.gnome.mutter center-new-windows true
+gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:appmenu'
 
-gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:maximize,minimize,close'
 
-#config dos atalhos
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']" 
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'Terminal'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "'alacritty'"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'<Super>t'"
+# style
+gsettings set org.gnome.desktop.wm.preferences titlebar-font 'SF Pro Display 11'
+gsettings set org.gnome.desktop.interface font-name 'SF Pro Display 12'
+gsettings set org.gnome.desktop.interface document-font-name 'Montserrat 12'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Cascadia Code PL 12'
+gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-Standard-Sapphire-Dark'
+gsettings set org.gnome.desktop.wm.preferences theme 'Catppuccin-Mocha-Standard-Sapphire-Dark'
 
-#adicionando ppas
-sudo add-apt-repository ppa:aslatter/ppa -y
-sudo add-apt-repository ppa:fish-shell/release-3 -y
-sudo apt update && sudo apt upgrade
 
-#instalando pacotes
-sudo apt install git -y
-sudo snap install brave gh
-sudo snap install code  --classic
-sudo snap install starship --edge
-sudo apt install build-essential net-tools alacritty fish -y
+# install essential
+sudo pacman -S base-devel net-tools git github-cli alacritty helix visual-studio-code-bin starship  --noconfirm
+
+# install asdf
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
