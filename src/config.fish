@@ -1,5 +1,6 @@
 starship init fish | source
 zoxide init fish | source
+source ~/.asdf/asdf.fish
 
 alias cat bat
 alias cd z
