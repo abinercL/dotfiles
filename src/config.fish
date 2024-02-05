@@ -15,4 +15,4 @@ alias lsa 'eza_ --git-ignore'
 alias lt 'eza_ -T --git-ignore'
 alias lta 'eza_ -Ta --git-ignore -I .git'
 alias rm rip
-
+alias hx helix
